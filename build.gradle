@@ -1,8 +1,9 @@
 plugins {
     id 'java'
+    id 'com.palantir.git-version' version '0.12.3'
 }
 
-group 'org.example'
+group 'io.github.ryanrupert'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -15,4 +16,19 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.1'
+}
+
+task customJar(type: Jar) {
+    manifest {
+        attributes (
+                'Main-Class': 'io.github.ryanrupert.MainProgram',
+                'Implementation-Version' : gitVersion()
+        )
+    }
+    archiveName('UnixLogger-' + gitVersion() + '.jar')
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it)}
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)}
+    }
+    with jar
 }
