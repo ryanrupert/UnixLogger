@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-7level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="combined" fileName="logs/combined.log">
+            <PatternLayout pattern="%d %-7level %logger{36} - %msg%n"/>
+        </File>
+        <File name="errorFile" fileName="logs/error.log">
+            <PatternLayout pattern="%d %-7level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="notice">
+            <!-- Only events at DIAG level or more specific are sent to the console. -->
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="combined" />
+            <AppenderRef ref="errorFile" level="error"/>
+        </Root>
+    </Loggers>
+</Configuration>
