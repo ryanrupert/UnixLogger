@@ -1,4 +1,4 @@
-package io.github.ryanrupert.UnixLogger;
+package com.github.ryanrupert.UnixLogger;
 
 class Main {
     public static void main(String args[]){

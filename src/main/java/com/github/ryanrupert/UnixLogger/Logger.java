@@ -1,4 +1,4 @@
-package io.github.ryanrupert.UnixLogger;
+package com.github.ryanrupert.UnixLogger;
 
 import java.io.Serializable;
 import org.apache.logging.log4j.Level;
